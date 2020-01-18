@@ -1,0 +1,25 @@
+{
+  "name": "i18n-plugin",
+  "version": "1.0.0",
+  "description": "易于添加i18n文案的插件。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sumarina/i18n-plugin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sumarina/i18n-plugin/issues"
+  },
+  "homepage": "https://github.com/Sumarina/i18n-plugin#readme",
+  "devDependencies": {
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0"
+  }
+}

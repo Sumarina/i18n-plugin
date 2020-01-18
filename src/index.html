@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>i18n plugin</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <style>
+        .image {
+            position: relative;
+
+            display: block;
+
+            /* overflow: hidden; */
+
+            box-shadow: 0 0 10px #FFF;
+            cursor: pointer;
+        }
+
+        .light {
+            cursor: pointer;
+            position: absolute;
+            width: 180px;
+            height: 90px;
+            left: -180px;
+            background-image: -moz-linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+            background-image: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+            transform: skewx(-25deg);
+            -o-transform: skewx(-25deg);
+            -moz-transform: skewx(-25deg);
+            -webkit-transform: skewx(-25deg);
+
+        }
+
+        .light:hover {
+            left: 180px;
+
+            -moz-transition: 0.5s;
+
+            -o-transition: 0.5s;
+
+            -webkit-transition: 0.5s;
+
+            transition: 0.5s;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <el-select v-model="language" multiple placeholder="请选择语言类型">
+            <el-option v-for="item in languageConf" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+        </el-select>
+        <el-button type="primary" @click="addLanguageFiles">确定</el-button>
+        <!-- <div class="image">
+            <a>
+                <img src="http://www.nowamagic.net/librarys/images/201402/2014_02_15_01.jpg" alt="">
+            </a>
+            <i class="light"></i>
+        </div> -->
+    </div>
+
+</body>
+<script src="./http.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            language: [],
+            languageConf: [
+                {
+                    value: 'en',
+                    label: '英语'
+                },
+                {
+                    value: 'jp',
+                    label: '日语'
+                },
+                {
+                    value: 'zh',
+                    label: '简体中文'
+                }
+            ]
+        },
+        methods: {
+            addLanguageFiles() {
+                ajax({
+                    type: 'get',
+                    url: '/query',
+                    dataType: 'json',
+                    success: function (res) {
+                        console.log(res);
+                    }
+                });
+            },
+            addAnimate() {
+                console.log("hello");
+            }
+        }
+    })
+
+
+</script>
+
+</html>
